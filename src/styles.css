@@ -1,0 +1,603 @@
+/* Basic reset */
+*{box-sizing:border-box;font-family: 'Arial', sans-serif}
+body{background-color:#ffffff;color:#222}
+
+/* Контейнер усього хедера */
+.hero {
+  position: relative;
+  padding: 100px 20px 60px; /* відступи, щоб не перекривалось */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Заголовок угорі ліворуч */
+.hero-title {
+  position: absolute;
+  top: 30px;
+  left: 90px;
+  margin: 0;
+  font-size: 2.2rem;
+  color: #fff;
+  text-align: left;
+}
+
+/* Центрована зона (підзаголовок + опис) */
+.hero-center {
+  margin-top: 70px; /* щоб не злипалось із заголовком */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* можна поставити center, якщо хочеш по центру */
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+
+/* Підзаголовок */
+.hero-subtitle {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 5px;
+  font-size: 1.8rem;
+  padding-left: 17px;
+}
+
+/* Опис */
+.hero-description {
+  font-size: 1.2rem;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.catalog-button {
+  margin-top: 25px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgb(244, 46, 191);
+  background-color: #f2efef;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(248, 1, 231, 0.25); /* тінь під кнопкою */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.catalog-button:hover {
+  background-color: #ffd6fd;
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35); /* тінь посилюється при наведенні */
+}
+
+.catalog-button:active {
+  transform: scale(0.97);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.catalog-section {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+}
+
+.cart-section {
+  background: #f0f0f0;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+/* Auth page matching the rounded white card in image */
+.page.auth-page{min-height:100vh;display:flex;align-items:center;justify-content:center}
+.card.auth-card{background:#fff;padding:28px;border-radius:18px;box-shadow:0 6px 18px rgba(0,0,0,0.08);width:360px;text-align:center}
+.card.auth-card h2{margin:0 0 6px}
+.card.auth-card .muted{color:#777;margin-bottom:12px}
+.card.auth-card form{display:flex;flex-direction:column;gap:8px}
+.card.auth-card input{padding:10px;border:1px solid #f9e7f7;border-radius:6px;color: #f4b5f2;}
+.card.auth-card button{padding:10px;border-radius:8px;border:#101010;background:#f4b1c2;color:#111;cursor:pointer;margin-top:6px}
+.card.auth-card .link{background:none;border:none;color:#777;cursor:pointer;margin-top:8px}
+.card.auth-card .message{color:green}
+
+/* Hero styles for user and admin pages */
+.hero{padding:48px 24px;border-radius:0 }
+.user-hero{background:linear-gradient(90deg,#ed288ee6,#ff9aa2);color:#fff;display:flex;justify-content:space-between;align-items:center}
+.user-hero .hero-left{max-width:60%}
+.admin-hero{background: #ddd;color:#333}
+
+/* Container */
+.container{max-width:1100px;margin:28px auto;padding:0 18px}
+
+/* Product grid (cards with rounded corners like image) */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;margin-top:18px}
+.product-card{background:#ffeef3;border-radius:18px;padding:12px;box-shadow:0 4px 10px rgba(0,0,0,0.05)}
+.product-card .img{height:140px;background-size:cover;background-position:center;border-radius:10px}
+.product-card h3{margin:10px 0 6px}
+.product-card .desc{color:#555;font-size:14px;height:44px;overflow:hidden}
+.product-card .row{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+.product-card button{padding:8px 10px;border-radius:8px;border:none;background:#ffcfea;cursor:pointer}
+.price .old{text-decoration:line-through;color:#888;margin-right:8px}
+
+/* Cart */
+.cart{margin-top:24px;background:#fff;padding:12px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.04)}
+
+/* Admin page */
+.admin-page .admin-hero{padding:40px;text-align:center}
+.admin-form{background:#f3f3f3;padding:12px;border-radius:12px;display:flex;flex-direction:column;gap:8px}
+.admin-form input{padding:8px;border-radius:6px;border:1px solid #ccc}
+.product-list{margin-top:16px}
+.product-row{display:flex;justify-content:space-between;align-items:center;padding:8px;background:#fff;border-radius:8px;margin-bottom:8px}
+.product-row img{width:80px;height:60px;object-fit:cover;border-radius:6px}
+.logout-row{margin-top:18px;text-align:right;padding-right:18px}
+
+/* змінюємо фон для всього main */
+#catalog {
+  background-color: white; /* або інший колір, наприклад #f5f5f5 */
+  padding: 20px; /* додатково можна додати відступи */
+}
+
+/* приклад для карток продуктів */
+.product-card {
+  background-color: #f8c9e16d; /* світлий фон для кожної картки */
+  border: 1px solid rgb(9, 0, 8);
+}
+/* Фон для кошика */
+.cart {
+  background-color: #f8c9f426; /* можна обрати будь-який колір, наприклад світло-блакитний */
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Кнопка Вийти */
+.logout-row button {
+  background-color: #ff3aa6; /* приємний червоний відтінок */
+  color: white; /* текст білий */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  position: absolute;
+  top: 15px;
+  right: 8%;
+  width: 50px;
+  height: 50px;
+}
+
+.product-card button {
+  background-color: #ffffff;
+
+}
+  
+
+.logout-row button:hover {
+  background-color: #ffc7fa; /* трохи темніший при наведені */
+  transform: scale(1.05); /* невелике збільшення при наведенні */
+}
+
+.logout-row {
+  margin-top: 20px; /* відступ від кошика */
+  text-align: right; /* кнопка буде праворуч */
+}
+
+.right-container {
+  position: absolute; /* стало absolute, не fixed */
+  top: 50%;           /* по середині по вертикалі блоку */
+  right: 15%;           /* прижатий до правого краю секції */
+  transform: translateY(-50%);
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.small-photo {
+  width: 435px;        /* ширина фото */
+  height: 470px;       /* висота фото */
+  border-radius: 25%;  /* робимо фото круглим */
+}
+
+.left-container {
+  position: absolute; /* стало absolute, не fixed */
+  top: 70%;           /* по середині по вертикалі блоку */
+  left: 15%;           /* прижатий до правого краю секції */
+  transform: translateY(-50%);
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.small-photop {
+  width: 250px;        /* ширина фото */
+  height: 270px;       /* висота фото */
+  border-radius: 25%;  /* робимо фото круглим */
+}
+
+/* 🎀 Стиль для кнопки Купити */
+.buy-button {
+  background-color: #ff7aa8; /* рожевий колір */
+  color: rgb(255, 101, 204);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease; /* плавна анімація */
+}
+
+/* 🌸 При наведенні — колір змінюється й зʼявляється тінь */
+.buy-button:hover {
+  background-color: #ffc4d89a; /* трохи темніший рожевий */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transform: scale(1.05);
+}
+
+/* 💫 При натисканні — кнопка збільшується трохи більше */
+.buy-button:active {
+  transform: scale(1.1);
+}
+
+
+/* 🌸 Стиль усіх кнопок в адмін-панелі */
+.admin-page button {
+  background-color: #a8a6a6; /* ніжно-рожевий колір */
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease; /* плавна анімація */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* м’яка тінь */
+}
+
+/* 🩷 При наведенні */
+.admin-page button:hover {
+  background-color: #8e8d8d; /* трохи темніший рожевий */
+  transform: scale(1.05); /* легке збільшення */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 🩶 Коли кнопка натиснута */
+.admin-page button:active {
+  transform: scale(0.97);
+}
+
+/* 🧁 Можеш зробити спеціальний стиль для "Видалити" */
+.admin-page .actions button {
+  background-color: #f76c6c; /* червонуватий для видалення */
+}
+
+.admin-page .actions button:hover {
+  background-color: #ff4d4d;
+}
+
+
+/* 🌸 Стиль усіх полів у формі адміністратора */
+.admin-page input[type="text"],
+.admin-page input[type="number"],
+.admin-page input[type="url"],
+.admin-page textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 6px 0 12px;
+  border: 1px solid #3d3b3c;
+  border-radius: 8px;
+  background-color: #fff; /* ніжний рожевувато-білий фон */
+  font-size: 15px;
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  outline: none;
+}
+
+/* 🩷 При фокусі (коли натискаєш на поле) */
+.admin-page input:focus,
+.admin-page textarea:focus {
+  border-color: #ffdbc6; /* рожевий акцент */
+  box-shadow: 0 0 6px rgba(250, 102, 53, 0.6);
+  background-color: #fff;
+}
+
+/* 🧁 Стиль самої форми */
+.admin-form {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 500px;
+}
+
+/* 🪞 Підпис форми */
+.admin-form h3 {
+  text-align: center;
+  color: #101010;
+  margin-bottom: 15px;
+}
+
+/* 🩶 Чекбокс */
+.admin-form label {
+  font-size: 15px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+/* 🎀 Центруємо лише форму */
+.admin-form {
+  margin: 0 auto; /* ставить форму по центру */
+  max-width: 450px; /* обмежує ширину */
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 🧩 Контейнер для кожного товару */
+.product-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0; /* тонка рамка */
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05); /* легка тінь */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 900px; /* робимо ширше */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 💫 Ефект при наведенні */
+.product-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 🖼️ Фото товару */
+.product-row img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 15px;
+  border: 1px solid #ddd;
+}
+
+/* 📋 Текстова частина */
+.product-row .meta {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+/* 🧷 Назва та опис */
+.product-row .meta div {
+  color: #333;
+  line-height: 1.3;
+}
+
+/* 🔘 Кнопка видалення */
+.product-row .actions button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  margin-right: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-row .actions button:hover {
+  background-color: #d32f2f;
+  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+}
+
+.product-header {
+  display: block;              /* щоб можна було задати ширину */
+  width: 85%;                  /* ширина блоку відносно екрану, можна змінити */
+  max-width: 900px;            /* максимум, щоб не розтягувався дуже сильно */
+  background-color: #e0e0e0;   /* сірий фон */
+  text-align: center;          /* текст по центру блоку */
+  font-size: 1.5rem;           /* розмір шрифту */
+  font-weight: bold;
+  padding: 20px 0;             /* вертикальні відступи */
+  margin: 20px auto;           /* зверху і знизу + по центру */
+  border-radius: 5px;          /* закруглення кутів */
+}
+
+.auth-card {
+  width: 400px;          /* ширша форма */
+  max-width: 90%;        /* щоб не виходила за межі екрану на маленьких пристроях */
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;    /* центр тексту та іконки */
+  background-color: #fff;
+}
+
+.auth-icon {
+  width: 45px;          /* розмір іконки */
+  height: 50px;
+  margin-bottom: 15px;  /* відстань між іконкою та заголовком */
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.card.auth-card {
+  width: 500px;
+  background-color: #ffffff;
+}
+
+.logo-container {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+}
+
+.site-logo {
+  width: 50px;        /* розмір логотипа */
+  height: 60px;       /* однакова висота й ширина */
+ 
+}
+
+.top-bar {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logout-button {
+  padding: 6px 12px;
+  background-color: #f81b95;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 35px;
+  width: 76px;
+  
+}
+
+.logout-button:hover {
+  background-color: #f05879;
+  box-shadow: #555;
+
+}
+
+.cart-icon {
+  width: 50PX;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.cart-popup {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  width: 320px;
+  background: #fff;
+  border: 2px solid #f2a7b0;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.cart-item-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.cart-popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-popup li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.total {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* 🩷 Стилі для кнопок у кошику */
+.cart-buttons {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.cart-buttons button {
+  background-color: #ffb6c1; /* ніжно-рожевий */
+  border: 1.5px solid #ff69b4; /* рожева рамка */
+  color: #fff;
+  padding: 5px 10px; /* зробили менші */
+  font-size: 13px; /* зменшений розмір тексту */
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(255, 105, 180, 0.35);
+  transition: all 0.25s ease;
+  max-width: 90px; /* не дає кнопці бути занадто широкою */
+  text-align: center;
+}
+
+/* 🩷 Ефект при наведенні */
+.cart-buttons button:hover {
+  background-color: #ff69b4;
+  transform: scale(1.06);
+  box-shadow: 0 4px 8px rgba(255, 105, 180, 0.5);
+}
+
+/* 🩷 Ефект при натисканні */
+.cart-buttons button:active {
+  transform: scale(1.1);
+  background-color: #ff85c1;
+  box-shadow: 0 2px 5px rgba(255, 105, 180, 0.45);
+}
+
+/* 🩷 Відмінність між кнопками */
+.cart-buttons button:first-child {
+  background-color: #ffc0cb; /* світліша — "Видалити" */
+}
+
+.cart-buttons button:last-child {
+  background-color: #ff8fb3; /* яскравіша — "Замінити" */
+}
+
+.product-page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.back-button {
+  background: #ffb6c1;
+  border: 2px solid #ff69b4;
+  color: white;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.back-button:hover {
+  background: #ff69b4;
+  transform: scale(1.05);
+}
+
