@@ -15,6 +15,25 @@ export default function AdminDashboard({ token, onLogout }) {
 
   async function createProduct(e) {
     e.preventDefault();
+
+    // 🔹 Фронтендна валідація
+    if (!form.title.trim()) {
+      alert('Поле "Заголовок" є обовʼязковим');
+      return;
+    }
+    if (!form.description.trim()) {
+      alert('Поле "Опис" є обовʼязковим');
+      return;
+    }
+    if (!form.price || form.price <= 0) {
+      alert('Поле "Ціна" має бути більше 0');
+      return;
+    }
+    if (!form.image.trim()) {
+      alert('Поле "URL картинки" є обовʼязковим');
+      return;
+    }
+
     const res = await fetch(API + '/products', {
       method: 'POST',
       headers: {
@@ -28,7 +47,8 @@ export default function AdminDashboard({ token, onLogout }) {
       setProducts(prev => [p, ...prev]);
       setForm({ title: '', description: '', price: 0, image: '', promotion: false, discountPercent: 0 });
     } else {
-      alert('Помилка при створенні товару');
+      const err = await res.json();
+      alert(err.message || 'Помилка при створенні товару');
     }
   }
 
@@ -57,6 +77,25 @@ export default function AdminDashboard({ token, onLogout }) {
 
   async function updateProduct(e, id) {
     e.preventDefault();
+
+    // 🔹 Валідація при редагуванні
+    if (!editForm.title.trim()) {
+      alert('Поле "Заголовок" є обовʼязковим');
+      return;
+    }
+    if (!editForm.description.trim()) {
+      alert('Поле "Опис" є обовʼязковим');
+      return;
+    }
+    if (!editForm.price || editForm.price <= 0) {
+      alert('Поле "Ціна" має бути більше 0');
+      return;
+    }
+    if (!editForm.image.trim()) {
+      alert('Поле "URL картинки" є обовʼязковим');
+      return;
+    }
+
     const res = await fetch(API + '/products/' + id, {
       method: 'PUT',
       headers: {
@@ -70,7 +109,8 @@ export default function AdminDashboard({ token, onLogout }) {
       setProducts(prev => prev.map(p => (p._id === id ? updated : p)));
       setEditingId(null);
     } else {
-      alert('Помилка при оновленні товару');
+      const err = await res.json();
+      alert(err.message || 'Помилка при оновленні товару');
     }
   }
 
